@@ -3,7 +3,11 @@ package pizza.user;
 import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -91,6 +95,15 @@ public class Login extends JFrame {
 	 */
 	private void createUser(String number) {
 		Register r = new Register();
+		BufferedWriter b;
+
+		try {
+			b = new BufferedWriter(new FileWriter("pizza.txt", true));
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 
 	}
 
@@ -100,13 +113,21 @@ public class Login extends JFrame {
 	private void readKunden() {
 		kunden = new ArrayList<>();
 		File f = new File("pizza.txt");
+		BufferedReader b;
+		String line;
 		try {
 			if (!f.exists()) {
 				f.createNewFile();
 			}
-			// TODO Kunden einlesen
+			b = new BufferedReader(new FileReader("pizza.txt"));
+
+			while ((line = b.readLine()) != null) {
+				Kunde k = Kunde.valueOf(line);
+				kunden.add(k);
+			}
+			b.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}
