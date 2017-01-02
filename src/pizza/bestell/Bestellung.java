@@ -48,9 +48,9 @@ public class Bestellung extends JFrame {
 		
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 681, 426);
+		setBounds(100, 100, 480, 360);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(4, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -58,7 +58,7 @@ public class Bestellung extends JFrame {
 
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		JRadioButton rdbtnSmall = new JRadioButton("small");
@@ -75,8 +75,8 @@ public class Bestellung extends JFrame {
 		GridBagConstraints gbc_rdbtnNormal = new GridBagConstraints();
 		gbc_rdbtnNormal.fill = GridBagConstraints.HORIZONTAL;
 		gbc_rdbtnNormal.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnNormal.gridx = 1;
-		gbc_rdbtnNormal.gridy = 2;
+		gbc_rdbtnNormal.gridx = 2;
+		gbc_rdbtnNormal.gridy = 1;
 		contentPane.add(rdbtnNormal, gbc_rdbtnNormal);
 		
 		JRadioButton rdbtnXxl = new JRadioButton("XXL");
@@ -84,8 +84,8 @@ public class Bestellung extends JFrame {
 		GridBagConstraints gbc_rdbtnXxl = new GridBagConstraints();
 		gbc_rdbtnXxl.fill = GridBagConstraints.HORIZONTAL;
 		gbc_rdbtnXxl.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnXxl.gridx = 1;
-		gbc_rdbtnXxl.gridy = 3;
+		gbc_rdbtnXxl.gridx = 3;
+		gbc_rdbtnXxl.gridy = 1;
 		contentPane.add(rdbtnXxl, gbc_rdbtnXxl);
 		
 		JLabel lblPizza = new JLabel("Pizza:");
