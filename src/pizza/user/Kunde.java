@@ -2,14 +2,14 @@ package pizza.user;
 
 public class Kunde{
 
-	private final int nummer;
+	private final String nummer;
 	private final String vname;
 	private final String nname;
 	private final String adresse;
 	private final int plz;
 	private final String ort;
 	
-	public Kunde(int nummer, String vname, String nname, String adresse, int plz, String ort){
+	public Kunde(String nummer, String vname, String nname, String adresse, int plz, String ort){
 		this.nummer = nummer;
 		this.vname = vname;
 		this.nname = nname;
@@ -18,7 +18,7 @@ public class Kunde{
 		this.ort = ort;
 	}
 
-	public int getNummer() {
+	public String getNummer() {
 		return nummer;
 	}
 
