@@ -94,7 +94,7 @@ public class Login extends JFrame {
 	 * @param number
 	 */
 	private void createUser(String number) {
-		Register r = new Register();
+		Register r = new Register(number);
 		BufferedWriter b;
 
 		try {
