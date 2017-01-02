@@ -24,7 +24,8 @@ public class Kunde {
 	 * @param plz
 	 */
 	public Kunde(String nummer, String vname, String nname, String adresse, String ort, int plz) {
-		if(nummer == null || vname == null || nname == null || adresse == null || ort == null)
+		if (isEmptyOrNull(nummer) || isEmptyOrNull(vname) || isEmptyOrNull(nname) || isEmptyOrNull(adresse)
+				|| isEmptyOrNull(ort))
 			throw new NullPointerException("Kunde values may not be null");
 		this.nummer = nummer;
 		this.vname = vname;
@@ -33,6 +34,10 @@ public class Kunde {
 		this.ort = ort;
 		this.plz = plz;
 
+	}
+
+	private boolean isEmptyOrNull(String s) {
+		return s == null || s.equals("");
 	}
 
 	public String getNummer() {
