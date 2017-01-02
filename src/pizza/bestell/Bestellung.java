@@ -15,7 +15,8 @@ import layout.TableLayout;
 
 public class Bestellung extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel mainBestellFrame;
+	private ExtraZutaten extraZutatenFrame;
 	private JRadioButton btnSmall, btnNormal, btnXXL;
 	private ButtonGroup groupSize;
 	private JComboBox<Typ> types;
@@ -45,8 +46,8 @@ public class Bestellung extends JFrame {
 		setBounds(100, 100, 450, 300);
 		setSize(640, 480);
 		setMinimumSize(new Dimension(450, 300));
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		mainBestellFrame = new JPanel();
+		mainBestellFrame.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		double f = TableLayout.FILL;
 		int height = 30;
@@ -56,22 +57,22 @@ public class Bestellung extends JFrame {
 		double[] row = new double[] { 20, height, height, f, height, f, height, f, height, height };
 		double[][] size = new double[][] { col, row };
 
-		contentPane.setLayout(new TableLayout(size));
-		setContentPane(contentPane);
+		mainBestellFrame.setLayout(new TableLayout(size));
+		setContentPane(mainBestellFrame);
 
 		// Buttons
-		contentPane.add(getBtnSmall(), "1, 2, c, c");
-		contentPane.add(getBtnNormal(), "2, 2, c, c");
-		contentPane.add(getBtnXXL(), "3, 2, c, c");
+		mainBestellFrame.add(getBtnSmall(), "1, 2, c, c");
+		mainBestellFrame.add(getBtnNormal(), "2, 2, c, c");
+		mainBestellFrame.add(getBtnXXL(), "3, 2, c, c");
 
 		// Button Labels
-		contentPane.add(new JLabel("Small"), "1, 1, c, c");
-		contentPane.add(new JLabel("Normal"), "2, 1, c, c");
-		contentPane.add(new JLabel("XXL"), "3, 1, c, c");
+		mainBestellFrame.add(new JLabel("Small"), "1, 1, c, c");
+		mainBestellFrame.add(new JLabel("Normal"), "2, 1, c, c");
+		mainBestellFrame.add(new JLabel("XXL"), "3, 1, c, c");
 
 		// Pizzen Dropdown List
-		contentPane.add(getTypes(), "1,4,3,c");
-		contentPane.add(new JLabel("Pizzen:  ", JLabel.RIGHT), "0,4,f,c");
+		mainBestellFrame.add(getTypes(), "1,4,3,c");
+		mainBestellFrame.add(new JLabel("Pizzen:  ", JLabel.RIGHT), "0,4,f,c");
 
 	}
 
