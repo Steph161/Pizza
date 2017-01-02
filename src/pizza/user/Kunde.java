@@ -73,7 +73,7 @@ public class Kunde {
 	 */
 	public static Kunde valueOf(String s) {
 		String parts[];
-		s = s.replace(" ", ""); // Leerzeichen entfernen
+		s = s.replace(", ", ","); // Leerzeichen entfernen
 		parts = s.split(",");
 		int plzn = Integer.parseInt(parts[5]);
 		Kunde ret = new Kunde(parts[0], parts[1], parts[2], parts[3], parts[4], plzn);
