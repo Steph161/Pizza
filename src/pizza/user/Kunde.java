@@ -79,4 +79,56 @@ public class Kunde {
 		Kunde ret = new Kunde(parts[0], parts[1], parts[2], parts[3], parts[4], plzn);
 		return ret;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
+		result = prime * result + ((nname == null) ? 0 : nname.hashCode());
+		result = prime * result + ((nummer == null) ? 0 : nummer.hashCode());
+		result = prime * result + ((ort == null) ? 0 : ort.hashCode());
+		result = prime * result + plz;
+		result = prime * result + ((vname == null) ? 0 : vname.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Kunde other = (Kunde) obj;
+		if (adresse == null) {
+			if (other.adresse != null)
+				return false;
+		} else if (!adresse.equals(other.adresse))
+			return false;
+		if (nname == null) {
+			if (other.nname != null)
+				return false;
+		} else if (!nname.equals(other.nname))
+			return false;
+		if (nummer == null) {
+			if (other.nummer != null)
+				return false;
+		} else if (!nummer.equals(other.nummer))
+			return false;
+		if (ort == null) {
+			if (other.ort != null)
+				return false;
+		} else if (!ort.equals(other.ort))
+			return false;
+		if (plz != other.plz)
+			return false;
+		if (vname == null) {
+			if (other.vname != null)
+				return false;
+		} else if (!vname.equals(other.vname))
+			return false;
+		return true;
+	}
 }
