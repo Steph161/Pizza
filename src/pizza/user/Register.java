@@ -1,81 +1,125 @@
 package pizza.user;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
 import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import layout.TableLayout;
+import layout.TableLayoutConstraints;
 
 public class Register extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField txtVorname;
+	private JTextField txtNachname;
+	private JTextField txtAdresse;
+	private JTextField txtOrt;
+	private JTextField txtPlz;
+	private String nummer;
+	private boolean ready = false;
 
 	/**
 	 * Create the frame.
 	 */
-	public Register() {
+	public Register(String nummer) {
+		this.nummer = nummer;
+		setTitle("Register");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 294, 169);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JLabel lblVorname = new JLabel("Vorname:");
-		lblVorname.setBounds(34, 8, 46, 14);
-		contentPane.add(lblVorname);
-		
-		textField = new JTextField();
-		textField.setBounds(114, 5, 158, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNachname = new JLabel("Nachname:");
-		lblNachname.setBounds(30, 33, 54, 14);
-		contentPane.add(lblNachname);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(114, 30, 158, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		JLabel lblAdresse = new JLabel("Adresse:");
-		lblAdresse.setBounds(36, 58, 43, 14);
-		contentPane.add(lblAdresse);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(114, 55, 158, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		JLabel lblOrt = new JLabel("Ort:");
-		lblOrt.setBounds(38, 83, 20, 14);
-		contentPane.add(lblOrt);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(114, 80, 158, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
-		JLabel lblPlz = new JLabel("PLZ:");
-		lblPlz.setBounds(38, 108, 21, 14);
-		contentPane.add(lblPlz);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(114, 105, 158, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		final double f = TableLayout.FILL;
+		contentPane.setLayout(new TableLayout(new double[][] { { 125, f }, { f, f, f, f, f } }));
+
+		JLabel lblVorname = new JLabel("Vorname: ");
+		lblVorname.setHorizontalAlignment(SwingConstants.RIGHT);
+		contentPane.add(lblVorname, new TableLayoutConstraints("0,0,c,c"));
+
+		txtVorname = new JTextField();
+		contentPane.add(txtVorname, new TableLayoutConstraints("1,0,f,c"));
+		txtVorname.setColumns(10);
+
+		JLabel lblNachname = new JLabel("Nachname: ");
+		lblNachname.setHorizontalAlignment(SwingConstants.RIGHT);
+		contentPane.add(lblNachname, new TableLayoutConstraints("0,1,c,c"));
+
+		txtNachname = new JTextField();
+		contentPane.add(txtNachname, new TableLayoutConstraints("1,1,f,c"));
+		txtNachname.setColumns(10);
+
+		JLabel lblAdresse = new JLabel("Adresse: ");
+		lblAdresse.setHorizontalAlignment(SwingConstants.RIGHT);
+		contentPane.add(lblAdresse, new TableLayoutConstraints("0,2,c,c"));
+
+		txtAdresse = new JTextField();
+		contentPane.add(txtAdresse, new TableLayoutConstraints("1,2,f,c"));
+		txtAdresse.setColumns(10);
+
+		JLabel lblOrt = new JLabel(" Ort: ");
+		lblOrt.setHorizontalAlignment(SwingConstants.RIGHT);
+		contentPane.add(lblOrt, new TableLayoutConstraints("0,3,c,c"));
+
+		txtOrt = new JTextField();
+		contentPane.add(txtOrt, new TableLayoutConstraints("1,3,f,c"));
+		txtOrt.setColumns(10);
+
+		JLabel lblPlz = new JLabel("PLZ: ");
+		lblPlz.setHorizontalAlignment(SwingConstants.RIGHT);
+		contentPane.add(lblPlz, new TableLayoutConstraints("0,4,c,c"));
+
+		txtPlz = new JTextField();
+		contentPane.add(txtPlz, new TableLayoutConstraints("1,4,f,c"));
+		txtPlz.setColumns(10);
+
+		txtVorname.addKeyListener(new JumpToOnEnter(txtNachname));
+		txtNachname.addKeyListener(new JumpToOnEnter(txtAdresse));
+		txtAdresse.addKeyListener(new JumpToOnEnter(txtOrt));
+		txtOrt.addKeyListener(new JumpToOnEnter(txtPlz));
+		txtPlz.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					ready = true;
+				}
+			}
+		});
+
 	}
+
+	public Kunde getKundeAndClose() {
+		Kunde k = null;
+		while (!ready) {
+			delay();
+			try {
+				int plz = Integer.parseInt(txtPlz.getText());
+
+				k = new Kunde(nummer, txtVorname.getText(), txtNachname.getText(), txtAdresse.getText(),
+						txtOrt.getText(), plz);
+			} catch (NullPointerException | NumberFormatException e) {
+				ready = false;
+			}
+		}
+		this.dispose();
+		return k;
+	}
+
+	private void delay() {
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} while (!ready);
+	}
+
 }

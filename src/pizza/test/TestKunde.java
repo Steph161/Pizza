@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import pizza.user.Kunde;
+import pizza.user.Register;
 
 public class TestKunde {
 
