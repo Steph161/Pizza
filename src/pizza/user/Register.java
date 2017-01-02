@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -106,6 +107,8 @@ public class Register extends JFrame {
 						txtOrt.getText(), plz);
 			} catch (NullPointerException | NumberFormatException e) {
 				ready = false;
+				JOptionPane.showMessageDialog(this, "Please fill out all Fields, PLZ may only contain numbers", "Error",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		}
 		this.dispose();

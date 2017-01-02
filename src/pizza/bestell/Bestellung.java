@@ -55,14 +55,14 @@ public class Bestellung extends JFrame {
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{16, 0, 0, 0, 30, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		JRadioButton rdbtnSmall = new JRadioButton("small");
 		sizeButtons.add(rdbtnSmall);
 		GridBagConstraints gbc_rdbtnSmall = new GridBagConstraints();
-		gbc_rdbtnSmall.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnSmall.fill = GridBagConstraints.HORIZONTAL;
 		gbc_rdbtnSmall.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnSmall.gridx = 1;
 		gbc_rdbtnSmall.gridy = 1;
@@ -71,7 +71,7 @@ public class Bestellung extends JFrame {
 		JRadioButton rdbtnNormal = new JRadioButton("normal");
 		sizeButtons.add(rdbtnNormal);
 		GridBagConstraints gbc_rdbtnNormal = new GridBagConstraints();
-		gbc_rdbtnNormal.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnNormal.fill = GridBagConstraints.HORIZONTAL;
 		gbc_rdbtnNormal.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnNormal.gridx = 1;
 		gbc_rdbtnNormal.gridy = 2;
@@ -80,7 +80,7 @@ public class Bestellung extends JFrame {
 		JRadioButton rdbtnXxl = new JRadioButton("XXL");
 		sizeButtons.add(rdbtnXxl);
 		GridBagConstraints gbc_rdbtnXxl = new GridBagConstraints();
-		gbc_rdbtnXxl.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnXxl.fill = GridBagConstraints.HORIZONTAL;
 		gbc_rdbtnXxl.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnXxl.gridx = 1;
 		gbc_rdbtnXxl.gridy = 3;
@@ -88,7 +88,7 @@ public class Bestellung extends JFrame {
 		
 		JLabel lblPizza = new JLabel("Pizza:");
 		GridBagConstraints gbc_lblPizza = new GridBagConstraints();
-		gbc_lblPizza.anchor = GridBagConstraints.WEST;
+		gbc_lblPizza.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lblPizza.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPizza.gridx = 1;
 		gbc_lblPizza.gridy = 5;
