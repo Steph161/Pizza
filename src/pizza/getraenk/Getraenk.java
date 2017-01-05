@@ -1,6 +1,6 @@
-package pizza.getränk;
+package pizza.getraenk;
 
-public class Getränk {
+public class Getraenk {
 
 	private final gSize gSize;
 	private final gTyp gType;
