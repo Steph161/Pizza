@@ -4,6 +4,7 @@ public class Pizza {
 
 	private final Size size;
 	private final Typ type;
+	private final Zutaten extra;
 	
 	
 }
