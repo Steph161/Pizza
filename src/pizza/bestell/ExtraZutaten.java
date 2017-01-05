@@ -1,3 +1,4 @@
+
 package pizza.bestell;
 
 import java.awt.EventQueue;
@@ -106,11 +107,11 @@ public class ExtraZutaten extends JPanel {
 			}
 		}
 	};
-	
-	private ArrayList<Zutaten> getAusgewaehlt(){
+
+	private ArrayList<Zutaten> getAusgewaehlt() {
 		ArrayList<Zutaten> ret = new ArrayList<>(maxClicked);
-		for(AuswahlButton btn : buttons){
-			if(btn.isSelected()){
+		for (AuswahlButton btn : buttons) {
+			if (btn.isSelected()) {
 				ret.add(btn.getZutat());
 			}
 		}
@@ -120,11 +121,9 @@ public class ExtraZutaten extends JPanel {
 	public void setMaxZutaten(int maxZutaten) {
 		this.maxClicked = maxZutaten;
 	}
-	
+
 	public void setMaxZutaten(Size maxZutaten) {
 		this.maxClicked = maxZutaten.getMax();
 	}
-	
-	
 
 }

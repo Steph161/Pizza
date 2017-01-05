@@ -2,5 +2,5 @@ package pizza.pizza;
 
 public enum Typ {
 
-	Margaritha, Salami, Diavolo, Rustica, Spinaci, Hawaii, Siciliana
+	Auswahl, Margaritha, Salami, Diavolo, Rustica, Spinaci, Hawaii, Siciliana
 }
