@@ -1,4 +1,5 @@
-package pizza.getränk;
+
+package pizza.getraenk;
 
 public enum gSize {
 
