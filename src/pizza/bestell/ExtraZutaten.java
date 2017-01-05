@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import layout.TableLayout;
@@ -19,7 +20,6 @@ public class ExtraZutaten extends JPanel {
 	private ArrayList<AuswahlButton> buttons;
 	private int maxClicked;
 	private boolean disabled = false;
-	private JButton btnClose;
 
 	/**
 	 * Launch the application.
@@ -53,7 +53,7 @@ public class ExtraZutaten extends JPanel {
 			width++;
 		}
 		this.buttons = new ArrayList<>(numZutaten);
-		double[] rows = new double[height + 1];
+		double[] rows = new double[height];
 		double[] cols = new double[width];
 
 		Arrays.fill(rows, TableLayout.FILL);
@@ -61,22 +61,27 @@ public class ExtraZutaten extends JPanel {
 
 		this.setLayout(new TableLayout(new double[][] { cols, rows }));
 		Zutaten[] zutaten = Zutaten.values();
-		for (int h = 0; h < width; h++) {
-			for (int w = 0; w < height && h * height + w < numZutaten; w++) {
-				Zutaten z = zutaten[w + h * height];
-				this.add(new AuswahlButton(z.name(), buttons, z), getConstraints(h, w));
+		for (int w = 0; w < width; w++) {
+			for (int h = 0; h < height && w * height + h < numZutaten; h++) {
+				Zutaten z = zutaten[h + w * height];
+				this.add(new AuswahlButton(z.name(), buttons, z), getConstraints(w, h));
 			}
 		}
 
-		btnClose = new JButton("Finish");
-		this.add(btnClose, width / 2 + "," + height + ",f,c");
 		for (AuswahlButton btn : buttons) {
 			btn.addActionListener(buttonClicked);
 		}
 
 	}
 
-	private String getConstraints(int h, int w) {
+	/**
+	 * Berechnet die Constraints für das Layout abh&auml;ngig von der Position
+	 * 
+	 * @param w Die Spalte
+	 * @param h Die Zeile
+	 * @return
+	 */
+	private String getConstraints(int w, int h) {
 		return w + "," + h + ",c,c";
 	}
 
@@ -84,31 +89,43 @@ public class ExtraZutaten extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int clicked = 0;
-			for (AuswahlButton btn : buttons) {
-				if (btn.isSelected()) {
-					clicked++;
-				}
-			}
-			if (clicked >= maxClicked) {
-				for (AuswahlButton btn : buttons) {
-					if (!btn.isSelected()) {
-						btn.setEnabled(false);
-					}
-				}
-				disabled = true;
-			} else if (clicked < maxClicked && disabled) {
-				disabled = false;
-				for (AuswahlButton btn : buttons) {
-					if (!btn.isEnabled()) {
-						btn.setEnabled(true);
-					}
-				}
-			}
+			int check = checkAusgewaehlt();
 		}
 	};
 
-	private ArrayList<Zutaten> getAusgewaehlt() {
+	private int checkAusgewaehlt() {
+		int check = 0;
+		for (AuswahlButton btn : buttons) {
+			if (btn.isSelected()) {
+				check++;
+			}
+		}
+		if (check >= maxClicked) {
+			for (AuswahlButton btn : buttons) {
+				if (!btn.isSelected()) {
+					btn.setEnabled(false);
+				}
+			}
+			disabled = true;
+		} else if (check < maxClicked && disabled) {
+			disabled = false;
+			for (AuswahlButton btn : buttons) {
+				if (!btn.isEnabled()) {
+					btn.setEnabled(true);
+				}
+			}
+		}
+		if (check == 0) {
+			this.disabled = true;
+		} else if (check > 0) {
+			this.disabled = false;
+		} else if (check < 0) {
+			JOptionPane.showMessageDialog(null, "Zu viele Zutaten!!!", "Fehler", JOptionPane.ERROR_MESSAGE);
+		}
+		return maxClicked - check;
+	}
+
+	public ArrayList<Zutaten> getAusgewaehlt() {
 		ArrayList<Zutaten> ret = new ArrayList<>(maxClicked);
 		for (AuswahlButton btn : buttons) {
 			if (btn.isSelected()) {
@@ -120,10 +137,11 @@ public class ExtraZutaten extends JPanel {
 
 	public void setMaxZutaten(int maxZutaten) {
 		this.maxClicked = maxZutaten;
+		checkAusgewaehlt();
 	}
 
 	public void setMaxZutaten(Size maxZutaten) {
-		this.maxClicked = maxZutaten.getMax();
+		setMaxZutaten(maxZutaten.getMax());
 	}
 
 }
