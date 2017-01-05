@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import layout.TableLayout;
+import pizza.pizza.Size;
 import pizza.pizza.Zutaten;
 
 public class ExtraZutaten extends JPanel {
@@ -28,7 +29,7 @@ public class ExtraZutaten extends JPanel {
 				try {
 
 					Bestellung frame = new Bestellung();
-					ExtraZutaten intFrame = new ExtraZutaten(3, e -> frame.setContentPane(new JPanel()));
+					ExtraZutaten intFrame = new ExtraZutaten();
 					frame.setContentPane(intFrame);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -41,8 +42,8 @@ public class ExtraZutaten extends JPanel {
 	/**
 	 * Create the frame.
 	 */
-	public ExtraZutaten(int maxZutaten, ActionListener finish) {
-		this.maxClicked = maxZutaten;
+	public ExtraZutaten() {
+		this.maxClicked = 7;
 		setBounds(100, 100, 450, 300);
 		int numZutaten = Zutaten.values().length;
 		int height = (int) Math.ceil(Math.sqrt(numZutaten));
@@ -67,7 +68,6 @@ public class ExtraZutaten extends JPanel {
 		}
 
 		btnClose = new JButton("Finish");
-		btnClose.addActionListener(finish);
 		this.add(btnClose, width / 2 + "," + height + ",f,c");
 		for (AuswahlButton btn : buttons) {
 			btn.addActionListener(buttonClicked);
@@ -116,5 +116,15 @@ public class ExtraZutaten extends JPanel {
 		}
 		return ret;
 	}
+
+	public void setMaxZutaten(int maxZutaten) {
+		this.maxClicked = maxZutaten;
+	}
+	
+	public void setMaxZutaten(Size maxZutaten) {
+		this.maxClicked = maxZutaten.getMax();
+	}
+	
+	
 
 }
