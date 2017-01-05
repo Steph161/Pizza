@@ -1,3 +1,4 @@
+
 package pizza.bestell;
 
 import java.awt.EventQueue;
@@ -16,7 +17,10 @@ import javax.swing.border.EmptyBorder;
 import pizza.getraenk.gTyp;
 import pizza.pizza.Size;
 import pizza.pizza.Typ;
-import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JTextPane;
 
 public class Bestellung extends JFrame {
 
@@ -88,33 +92,59 @@ public class Bestellung extends JFrame {
 		contentPane.add(comboBox);
 
 		// Getr�nke
-		JLabel lblGetraenke = new JLabel("Getr�nke");
+		JLabel lblGetraenke = new JLabel("Getraenke");
 		lblGetraenke.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblGetraenke.setBounds(459, 12, 106, 20);
+		lblGetraenke.setBounds(632, 12, 106, 20);
 		contentPane.add(lblGetraenke);
 		// Auswahl Gr��e
 		JRadioButton rdbtnSmalll = new JRadioButton("small (0,25l)");
 		buttonGroup_1.add(rdbtnSmalll);
-		rdbtnSmalll.setBounds(459, 61, 109, 23);
+		rdbtnSmalll.setBounds(632, 61, 109, 23);
 		contentPane.add(rdbtnSmalll);
 
 		JRadioButton rdbtnNormalll = new JRadioButton("normall (0,5l)");
 		buttonGroup_1.add(rdbtnNormalll);
-		rdbtnNormalll.setBounds(459, 98, 109, 23);
+		rdbtnNormalll.setBounds(632, 98, 109, 23);
 		contentPane.add(rdbtnNormalll);
 
-		JLabel lblGetraenk = new JLabel("Getr�nk:");
+		JLabel lblGetraenk = new JLabel("Getraenk:");
 		lblGetraenk.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblGetraenk.setBounds(459, 196, 62, 18);
+		lblGetraenk.setBounds(632, 196, 62, 18);
 		contentPane.add(lblGetraenk);
 		// Getr�nke in einer Liste
 		JComboBox comboBox_1 = new JComboBox(gTyp.values());
-		comboBox_1.setBounds(531, 196, 136, 20);
+		comboBox_1.setBounds(720, 196, 136, 20);
 		contentPane.add(comboBox_1);
 
 		panelZutaten = new ExtraZutaten();
-		panelZutaten.setBounds(16, 274, 362, 278);
+		panelZutaten.setBounds(16, 385, 351, 302);
 		contentPane.add(panelZutaten);
+
+		JButton btnHinzufgen = new JButton("Hinzuf\u00FCgen");
+		btnHinzufgen.setBounds(84, 785, 169, 41);
+		contentPane.add(btnHinzufgen);
+
+		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(new Integer(1), null, null, new Integer(1)));
+		spinner.setBounds(16, 788, 46, 34);
+		contentPane.add(spinner);
+
+		JButton btnLschen = new JButton("L\u00F6schen");
+		btnLschen.setBounds(278, 785, 89, 41);
+		contentPane.add(btnLschen);
+
+		JSpinner spinner_2 = new JSpinner();
+		spinner_2.setModel(new SpinnerNumberModel(new Integer(1), null, null, new Integer(1)));
+		spinner_2.setBounds(632, 788, 46, 34);
+		contentPane.add(spinner_2);
+
+		JButton button = new JButton("Hinzuf\u00FCgen");
+		button.setBounds(693, 785, 169, 41);
+		contentPane.add(button);
+
+		JButton button_1 = new JButton("L\u00F6schen");
+		button_1.setBounds(878, 785, 89, 41);
+		contentPane.add(button_1);
 	}
 
 	/**
