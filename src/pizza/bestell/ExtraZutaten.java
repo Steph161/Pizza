@@ -77,8 +77,10 @@ public class ExtraZutaten extends JPanel {
 	/**
 	 * Berechnet die Constraints für das Layout abh&auml;ngig von der Position
 	 * 
-	 * @param w Die Spalte
-	 * @param h Die Zeile
+	 * @param w
+	 *            Die Spalte
+	 * @param h
+	 *            Die Zeile
 	 * @return
 	 */
 	private String getConstraints(int w, int h) {
@@ -115,14 +117,24 @@ public class ExtraZutaten extends JPanel {
 				}
 			}
 		}
+		check = maxClicked - check;
 		if (check == 0) {
-			this.disabled = true;
+			enableButtons(false);
 		} else if (check > 0) {
-			this.disabled = false;
+			enableButtons(true);
 		} else if (check < 0) {
+			enableButtons(false);
 			JOptionPane.showMessageDialog(null, "Zu viele Zutaten!!!", "Fehler", JOptionPane.ERROR_MESSAGE);
 		}
 		return maxClicked - check;
+	}
+	private void enableButtons(boolean enabled){
+		this.disabled = !enabled;
+		for(AuswahlButton btn : buttons){
+			if(!btn.isSelected()){
+				btn.setEnabled(enabled);
+			}
+		}
 	}
 
 	public ArrayList<Zutaten> getAusgewaehlt() {
