@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import pizza.bestell.Bestellung;
+
 public class Login extends JFrame {
 
 	private JPanel contentPane;
@@ -68,10 +70,21 @@ public class Login extends JFrame {
 		lblNummer.setBounds(10, 13, 65, 17);
 		contentPane.add(lblNummer);
 		
+		readKunden();
 		//TODO Kunden einlesen
 	}
 
 	protected void changer() {
+		
+		if(checkUser(txtTel.getText())){
+			Bestellung b = new Bestellung();
+			b.setVisible(true);
+			this.dispose();
+		}else{
+			createUser(txtTel.getText());
+			this.dispose();
+		}
+		
 		// TODO Einloggen falls Kunde mit Nummer vorhanden, sonst neuen Kunden anlegen
 
 	}
@@ -102,7 +115,12 @@ public class Login extends JFrame {
 		try {
 			b = new BufferedWriter(new FileWriter("pizza.txt", true));
 			//TODO Kunde von Register getten und mit BufferedWriter in Datei schreiben
-
+			this.setVisible(false);
+			r.setVisible(true);
+			b.write(r.getKundeAndClose().toString());
+			b.newLine();
+			b.close();
+			
 		} catch (IOException e) {
 
 			e.printStackTrace();
