@@ -16,4 +16,11 @@ public class TestRegister {
 		assertNotEquals(null, k);
 	}
 
+	public static void test1() {
+		Register r = new Register("06642121045");
+		r.setVisible(true);
+		Kunde k = r.getKundeAndClose();
+		assertNotEquals(null, k);
+	}
+
 }

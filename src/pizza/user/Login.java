@@ -1,5 +1,7 @@
 package pizza.user;
 
+import static org.junit.Assert.assertNotEquals;
+
 import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -18,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import pizza.bestell.Bestellung;
+import pizza.test.TestRegister;
 
 public class Login extends JFrame {
 
@@ -45,7 +48,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 192, 80);
 		contentPane = new JPanel();
@@ -69,23 +72,27 @@ public class Login extends JFrame {
 		JLabel lblNummer = new JLabel("Nummer:");
 		lblNummer.setBounds(10, 13, 65, 17);
 		contentPane.add(lblNummer);
-		
+
 		readKunden();
-		//TODO Kunden einlesen
+		// TODO Kunden einlesen
 	}
 
 	protected void changer() {
-		
-		if(checkUser(txtTel.getText())){
+
+		if (checkUser(txtTel.getText())) {
 			Bestellung b = new Bestellung();
 			b.setVisible(true);
 			this.dispose();
-		}else{
-			createUser(txtTel.getText());
+		} else {
+			Kunde tmp = createUser(txtTel.getText());
+			if (tmp == null) {
+				System.out.println("123");
+			}
 			this.dispose();
 		}
-		
-		// TODO Einloggen falls Kunde mit Nummer vorhanden, sonst neuen Kunden anlegen
+
+		// TODO Einloggen falls Kunde mit Nummer vorhanden, sonst neuen Kunden
+		// anlegen
 
 	}
 
@@ -108,23 +115,26 @@ public class Login extends JFrame {
 	 * 
 	 * @param number
 	 */
-	private void createUser(String number) {
-		Register r = new Register(number);
+	private Kunde createUser(String number) {
+		Register r = new Register("12345678").showRegister();
 		BufferedWriter b;
+		Kunde k = null;
 
 		try {
 			b = new BufferedWriter(new FileWriter("pizza.txt", true));
-			//TODO Kunde von Register getten und mit BufferedWriter in Datei schreiben
-			this.setVisible(false);
-			r.setVisible(true);
-			b.write(r.getKundeAndClose().toString());
+			// TODO Kunde von Register getten und mit BufferedWriter in Datei
+			// schreiben
+			// this.setVisible(false);
+//			k = r.getKundeAndClose();
+			// b.write(r.getKundeAndClose().toString());
 			b.newLine();
 			b.close();
-			
+
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
+		return k;
 
 	}
 
@@ -143,6 +153,9 @@ public class Login extends JFrame {
 			b = new BufferedReader(new FileReader("pizza.txt"));
 
 			while ((line = b.readLine()) != null) {
+				if (line.equals("")) {
+					continue;
+				}
 				Kunde k = Kunde.valueOf(line);
 				kunden.add(k);
 			}

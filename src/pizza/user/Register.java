@@ -1,9 +1,7 @@
 package pizza.user;
 
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -119,10 +117,17 @@ public class Register extends JFrame {
 		do {
 			try {
 				Thread.sleep(100);
+				this.validate();
+				this.repaint();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		} while (!ready);
+	}
+	
+	public Register showRegister(){
+		this.setVisible(true);
+		return this;
 	}
 
 }

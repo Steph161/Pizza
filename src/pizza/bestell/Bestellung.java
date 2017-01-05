@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 import pizza.getraenk.gTyp;
 import pizza.pizza.Size;
 import pizza.pizza.Typ;
+import javax.swing.JTextArea;
 
 public class Bestellung extends JFrame {
 
@@ -136,5 +137,4 @@ public class Bestellung extends JFrame {
 		}
 
 	}
-
 }
