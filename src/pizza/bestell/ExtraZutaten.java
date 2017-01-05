@@ -106,5 +106,15 @@ public class ExtraZutaten extends JPanel {
 			}
 		}
 	};
+	
+	private ArrayList<Zutaten> getAusgewaehlt(){
+		ArrayList<Zutaten> ret = new ArrayList<>(maxClicked);
+		for(AuswahlButton btn : buttons){
+			if(btn.isSelected()){
+				ret.add(btn.getZutat());
+			}
+		}
+		return ret;
+	}
 
 }

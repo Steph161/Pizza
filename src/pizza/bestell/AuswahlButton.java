@@ -14,4 +14,8 @@ public class AuswahlButton extends JRadioButton {
 		this.z = z;
 		list.add(this);
 	}
+
+	public Zutaten getZutat() {
+		return z;
+	}
 }
