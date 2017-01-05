@@ -43,7 +43,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 192, 80);
 		contentPane = new JPanel();
@@ -56,7 +56,7 @@ public class Login extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					Login.changer();
+					Login.this.changer();
 				}
 			}
 		});
@@ -67,10 +67,12 @@ public class Login extends JFrame {
 		JLabel lblNummer = new JLabel("Nummer:");
 		lblNummer.setBounds(10, 13, 65, 17);
 		contentPane.add(lblNummer);
+		
+		//TODO Kunden einlesen
 	}
 
-	protected static void changer() {
-		// TODO Auto-generated method stub
+	protected void changer() {
+		// TODO Einloggen falls Kunde mit Nummer vorhanden, sonst neuen Kunden anlegen
 
 	}
 
@@ -99,6 +101,7 @@ public class Login extends JFrame {
 
 		try {
 			b = new BufferedWriter(new FileWriter("pizza.txt", true));
+			//TODO Kunde von Register getten und mit BufferedWriter in Datei schreiben
 
 		} catch (IOException e) {
 
@@ -108,7 +111,7 @@ public class Login extends JFrame {
 	}
 
 	/**
-	 * Reads all users to a Kunde ArrayList
+	 * Liest Kunden ein
 	 */
 	private void readKunden() {
 		kunden = new ArrayList<>();
