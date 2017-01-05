@@ -1,3 +1,4 @@
+
 package pizza.getraenk;
 
 public class Getraenk {
@@ -6,3 +7,4 @@ public class Getraenk {
 	private final gTyp gType;
 	
 }
+
