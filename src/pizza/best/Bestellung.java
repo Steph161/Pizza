@@ -18,6 +18,7 @@ public class Bestellung extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -76,5 +77,25 @@ public class Bestellung extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(71, 196, 142, 20);
 		contentPane.add(comboBox);
+		
+		JLabel lblGetrnke = new JLabel("Getr\u00E4nke");
+		lblGetrnke.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblGetrnke.setBounds(459, 12, 106, 20);
+		contentPane.add(lblGetrnke);
+		
+		JRadioButton rdbtnSmalll = new JRadioButton("small (0,25l)");
+		buttonGroup_1.add(rdbtnSmalll);
+		rdbtnSmalll.setBounds(459, 61, 109, 23);
+		contentPane.add(rdbtnSmalll);
+		
+		JRadioButton rdbtnNormalll = new JRadioButton("normall (0,5l)");
+		buttonGroup_1.add(rdbtnNormalll);
+		rdbtnNormalll.setBounds(459, 98, 109, 23);
+		contentPane.add(rdbtnNormalll);
+		
+		JLabel lblGetrnk = new JLabel("Getr\u00E4nk:");
+		lblGetrnk.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblGetrnk.setBounds(459, 196, 62, 18);
+		contentPane.add(lblGetrnk);
 	}
 }
