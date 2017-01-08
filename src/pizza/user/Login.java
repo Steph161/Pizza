@@ -145,4 +145,8 @@ public class Login extends JFrame {
 		return null;
 	}
 
+	public String getNummer() {
+		return nummer;
+	}
+
 }
