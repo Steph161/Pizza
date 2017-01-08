@@ -153,15 +153,24 @@ public class Bestellung extends JFrame {
 		lblBestellungen.setBounds(1101, 12, 109, 20);
 		contentPane.add(lblBestellungen);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setBounds(1101, 60, 363, 128);
-		contentPane.add(textArea);
+		JTextArea pizzaArea = new JTextArea();
+		pizzaArea.setEditable(false);
+		pizzaArea.setBounds(1101, 76, 363, 235);
+		contentPane.add(pizzaArea);
+		System.lineSeparator();
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setEditable(false);
-		textArea_1.setBounds(1101, 220, 363, 128);
-		contentPane.add(textArea_1);
+		JTextArea getraenkeArea = new JTextArea();
+		getraenkeArea.setEditable(false);
+		getraenkeArea.setBounds(1101, 357, 363, 206);
+		contentPane.add(getraenkeArea);
+		
+		JLabel lblPizzen_1 = new JLabel("Pizzen");
+		lblPizzen_1.setBounds(1101, 55, 46, 14);
+		contentPane.add(lblPizzen_1);
+		
+		JLabel lblGetraenke_1 = new JLabel("Getraenke");
+		lblGetraenke_1.setBounds(1101, 332, 81, 14);
+		contentPane.add(lblGetraenke_1);
 	}
 
 	/**
