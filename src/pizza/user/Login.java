@@ -1,15 +1,12 @@
-package pizza.user;
 
-import static org.junit.Assert.assertNotEquals;
+package pizza.user;
 
 import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -18,9 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import pizza.bestell.Bestellung;
-import pizza.test.TestRegister;
 
 public class Login extends JFrame {
 
