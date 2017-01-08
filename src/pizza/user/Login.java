@@ -27,6 +27,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtTel;
 	private ArrayList<Kunde> kunden;
+	private String nummer = null;
 
 	/**
 	 * Launch the application.
@@ -55,13 +56,13 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
 		txtTel = new JTextField();
 		txtTel.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					Login.this.changer();
+					Login.this.nummer = Login.this.txtTel.getText();
 				}
 			}
 		});
@@ -75,25 +76,6 @@ public class Login extends JFrame {
 
 		readKunden();
 		// TODO Kunden einlesen
-	}
-
-	protected void changer() {
-
-		if (checkUser(txtTel.getText())) {
-			Bestellung b = new Bestellung();
-			b.setVisible(true);
-			this.dispose();
-		} else {
-			Kunde tmp = createUser(txtTel.getText());
-			if (tmp == null) {
-				System.out.println("123");
-			}
-			this.dispose();
-		}
-
-		// TODO Einloggen falls Kunde mit Nummer vorhanden, sonst neuen Kunden
-		// anlegen
-
 	}
 
 	/**
@@ -125,7 +107,7 @@ public class Login extends JFrame {
 			// TODO Kunde von Register getten und mit BufferedWriter in Datei
 			// schreiben
 			// this.setVisible(false);
-//			k = r.getKundeAndClose();
+			// k = r.getKundeAndClose();
 			// b.write(r.getKundeAndClose().toString());
 			b.newLine();
 			b.close();
@@ -164,6 +146,35 @@ public class Login extends JFrame {
 
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Wartet bis der Nutzer etwas eingegeben hat und gibt dann den Kunden
+	 * zurück, falls für diese Telephonnummer einer Existiert. Ansonsten wird
+	 * null zurückgegeben
+	 * 
+	 * @return
+	 */
+	public Kunde doLogin() {
+		while(nummer == null){
+			try {
+				Thread.sleep(250);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		boolean exists = checkUser(nummer);
+		if(exists){
+			for(Kunde kun : kunden){
+				if(kun.getNummer().equals(nummer)){
+					return null;
+				}
+			}
+		}
+		else{
+			return null;
+		}
+		return null;
 	}
 
 }
