@@ -21,6 +21,8 @@ import javax.swing.JButton;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JTextPane;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 public class Bestellung extends JFrame {
 
@@ -145,6 +147,21 @@ public class Bestellung extends JFrame {
 		JButton button_1 = new JButton("L\u00F6schen");
 		button_1.setBounds(878, 785, 89, 41);
 		contentPane.add(button_1);
+		
+		JLabel lblBestellungen = new JLabel("Bestellungen");
+		lblBestellungen.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblBestellungen.setBounds(1101, 12, 109, 20);
+		contentPane.add(lblBestellungen);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setBounds(1101, 60, 363, 128);
+		contentPane.add(textArea);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
+		textArea_1.setBounds(1101, 220, 363, 128);
+		contentPane.add(textArea_1);
 	}
 
 	/**
