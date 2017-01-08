@@ -86,39 +86,13 @@ public class Login extends JFrame {
 	private boolean checkUser(String phoneNumer) {
 		for (Kunde k : kunden) {
 			if (k.getNummer().equals(phoneNumer)) {
+				
 				return true;
 			}
 		}
 		return false;
 	}
 
-	/**
-	 * Opens new Register Window
-	 * 
-	 * @param number
-	 */
-	private Kunde createUser(String number) {
-		Register r = new Register("12345678").showRegister();
-		BufferedWriter b;
-		Kunde k = null;
-
-		try {
-			b = new BufferedWriter(new FileWriter("pizza.txt", true));
-			// TODO Kunde von Register getten und mit BufferedWriter in Datei
-			// schreiben
-			// this.setVisible(false);
-			// k = r.getKundeAndClose();
-			// b.write(r.getKundeAndClose().toString());
-			b.newLine();
-			b.close();
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-		return k;
-
-	}
 
 	/**
 	 * Liest Kunden ein
